@@ -5,8 +5,7 @@
     "inject"      : true,
     "module"      : true,
     "jQuery"      : true,
-    "$"           : true,
-    "Webtrends"   : true
+    "$"           : true
   },
   "maxerr"        : 50,
 
@@ -63,9 +62,9 @@
   "couch"         : false,
   "devel"         : false,
   "dojo"          : false,
-  "jquery"        : false,
+  "jquery"        : true,
   "mootools"      : false,
-  "node"          : false,
+  "node"          : true,
   "nonstandard"   : false,
   "phantom"       : false,
   "prototypejs"   : false,

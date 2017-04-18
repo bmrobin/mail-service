@@ -8,6 +8,10 @@
         ],
         "trailing-comma": [
             false
+        ],
+        "no-var-requires": false,
+        "quotemark": [
+            false
         ]
     }
 }

@@ -3,7 +3,7 @@ module.exports = {
         bundle: "./src/main/scripts/app/app.ts"
     },
     output: {
-        path: "src/main/dist/",
+        path: __dirname +  "src/main/dist/",
         filename: "[name].js",
     },
     module: {

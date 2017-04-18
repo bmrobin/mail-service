@@ -43,11 +43,11 @@ module.exports = function (grunt) {
     watch: {
       ts: {
         files: [ '<%= app %>/scripts/**/*.ts' ],
-        tasks: [ 'backJackDoItAgain' ]
+        tasks: [ 'prep' ]
       },
       tsconfig: {
         files: [ '../tsconfig.json'],
-        tasks: [ 'backJackDoItAgain' ]
+        tasks: [ 'prep' ]
       },
     },
 
