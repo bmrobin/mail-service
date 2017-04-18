@@ -14,6 +14,9 @@ users.get('/', (request: Request, response: Response, next: NextFunction) => {
 
 users.post('/', (request: Request, response: Response, next: NextFunction) => {
     console.log('POST received on user route');
+    response.status(200);
+    response.type('application/json');
+    response.send({msg: 'response'});
 });
 
 export default users;
