@@ -1,9 +1,17 @@
+import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import index from './routes/index';
+import users from './routes/users';
 
 const app: express.Express = express();
 
+// setup
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// routes
 app.use('/', index);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
