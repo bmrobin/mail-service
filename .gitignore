@@ -1,0 +1,13 @@
+/build
+/.gradle
+/.idea
+/.vscode
+*.iml
+*.ipr
+*.iws
+/.tmp
+.tscache
+.baseDir.ts
+/node_modules
+dist
+coverage
