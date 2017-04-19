@@ -5,17 +5,13 @@ export class UserService {
     private userList: User[] = [];
 
     constructor() {
-        this.createSomeUsers();
-    }
-    public createSomeUsers() {
-        let user1: User = new User('bmrobin9823@gmail.com');
-        let user2: User = new User('bmrobin@g.clemson.edu');
-        this.userList.push(user1);
-        this.userList.push(user2);
+        // add me as default user
+        this.addUser('bmrobin9823@gmail.com');
     }
 
-    public addUser(user: User) {
-        this.userList.push(user);
+    public addUser(emailAddr: string) {
+        console.log('adding user ' + emailAddr);
+        this.userList.push(new User(emailAddr));
     }
 
     public getUserList(): User[] {

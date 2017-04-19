@@ -7,7 +7,6 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.loadNpmTasks('grunt-ts');
-  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.initConfig({
 
@@ -49,86 +48,13 @@ module.exports = function (grunt) {
         files: [ '../tsconfig.json'],
         tasks: [ 'prep' ]
       },
-    },
-
-    // Unit testing
-    karma: {
-      options: {
-        configFile: 'src/test/javascript/karma.conf.js'
-      },
-      unit: {
-        singleRun: true
-      },
-      debug: {
-        singleRun: false
-      }
-    },
-
-    // Istanbul JS test coverage
-    coverage: {
-      default: {
-        options: {
-          thresholds: {
-            statements: 89,
-            branches: 89,
-            lines: 89,
-            functions: 89
-          },
-          dir: 'coverage',
-          root: 'src/test/'
-        }
-      }
-    },
-
-    // JSHint
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: {
-        src: [
-          'gruntfile.js',
-          '<%= app %>/scripts/**/*.js'
-        ]
-      }, 
-      test: {
-        src: [
-          'gruntfile.js',
-          'src/test/spec/**/*.js'
-        ]
-      },
-      exclude: [ 'src/test/spec/e2e/*' ]
-    },
-
-    connect: {
-      server: {
-        options: {
-          port: 9000,
-          base: 'src/main/',
-          livereload: true
-        }
-      }
     }
 
   });
 
-  // Unit tests
-  grunt.registerTask('test', [
-    'clean',
-    'karma:unit',
-    'jshint:test'
-  ]);
-
-  // Host application in dev mode
-  grunt.registerTask('prep', [
+  grunt.registerTask('default', [
     'clean',
     'ts'
-  ]);
-
-  grunt.registerTask('default', [
-    'prep',
-    'watch'
   ]);
 
 };

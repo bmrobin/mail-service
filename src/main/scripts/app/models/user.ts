@@ -3,4 +3,7 @@ export class User {
     constructor(emailAddr: string) {
         this.emailAddress = emailAddr;
     }
+    public getEmailAddr(): string {
+        return this.emailAddress;
+    }
 }

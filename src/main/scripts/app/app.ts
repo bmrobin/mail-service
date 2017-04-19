@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import index from './routes/index';
+import mail from './routes/mail';
 import users from './routes/users';
 
 const app: express.Express = express();
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/mail', mail);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
