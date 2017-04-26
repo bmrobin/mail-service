@@ -56,7 +56,7 @@ export class MailService {
 
     private createMailMessage(toAddr: string, message: string): nodemailer.SendMailOptions {
         let options: nodemailer.SendMailOptions = {
-            from: "bmrobin9823@gmail.com",
+            from: this.configFile.user,
             subject: "Mail Service",
             text: message,
             to: toAddr
