@@ -14,8 +14,9 @@ A service that allows you to subscribe a group of users to receive email notific
 ```
 
 ### Usage
-Build the code and start the Express web server with
+Install dependencies, build the code, and start the Express web server with
 
+    $ npm install
     $ npm start
 
 Interact with the service:
