@@ -30,6 +30,10 @@ export class MailService {
         return Promise.all(promiseArray);
     }
 
+    /**
+     * Send an email to a user
+     * @param emailAddr email address to mail
+     */
     private mailUser(emailAddr: string): Bluebird<nodemailer.SentMessageInfo> {
         console.log('emailing user ' + emailAddr);
         return this.smtpTransporter.sendMail(
@@ -37,6 +41,9 @@ export class MailService {
         );
     }
 
+    /**
+     * Load OAuth2 config file from local filesystem
+     */
     private loadConfigFile(): Promise<any> {
         return new Promise((resolve, reject) => {
             fs.readFile(process.env.HOME + '/oauth2-config.json', (error, data) => {
@@ -50,6 +57,9 @@ export class MailService {
         });
     }
 
+    /**
+     * Configure a `nodemailer.Transporter` instance with the OAuth2 options from the config file
+     */
     private configureSmtpTransporter() {
         let smtpOptions: smtpTransport.SmtpOptions = {
             auth: {
@@ -64,6 +74,11 @@ export class MailService {
         this.smtpTransporter = nodemailer.createTransport(smtpOptions);
     }
 
+    /**
+     * Create an email message with to, from, subject, and message information
+     * @param toAddr recipient email address
+     * @param message message content
+     */
     private createMailMessage(toAddr: string, message: string): nodemailer.SendMailOptions {
         let options: nodemailer.SendMailOptions = {
             from: this.configFile.user,
