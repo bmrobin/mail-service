@@ -6,9 +6,10 @@ const mail: Router = Router();
 let mailService: MailService = new MailService();
 
 mail.get('/', (request: Request, response: Response, next: NextFunction) => {
-    mailService.mailUsers();
-    response.status(200);
-    response.type('application/json');
+    mailService.mailUsers().then(() => {
+        response.type('application/json');
+        response.sendStatus(200);
+    });
 });
 
 export default mail;

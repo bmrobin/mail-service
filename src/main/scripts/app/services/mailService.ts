@@ -1,3 +1,4 @@
+import * as Bluebird from 'bluebird';
 import { User } from '../models/user';
 import { UserService } from './userService';
 import nodemailer = require('nodemailer');
@@ -17,14 +18,23 @@ export class MailService {
         });
     }
 
-    public mailUsers() {
+    /**
+     * Collect the list of users and send emails to all of them.
+     * Returns a Promise when the entire operation is completed
+     */
+    public mailUsers(): Promise<any> {
+        let promiseArray = [];
         this.userService.getUserList().forEach((user: User) => {
-            let emailAddr = user.getEmailAddr();
-            console.log('emailing user ' + emailAddr);
-            this.smtpTransporter.sendMail(
-                this.createMailMessage(emailAddr, "here is your message!")
-            );
+            promiseArray.push(this.mailUser(user.getEmailAddr()));
         });
+        return Promise.all(promiseArray);
+    }
+
+    private mailUser(emailAddr: string): Bluebird<nodemailer.SentMessageInfo> {
+        console.log('emailing user ' + emailAddr);
+        return this.smtpTransporter.sendMail(
+            this.createMailMessage(emailAddr, "here is your message!")
+        );
     }
 
     private loadConfigFile(): Promise<any> {
