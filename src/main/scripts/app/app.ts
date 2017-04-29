@@ -5,7 +5,6 @@ import mail from './routes/mail';
 import users from './routes/users';
 
 const app: express.Express = express();
-
 // setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

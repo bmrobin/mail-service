@@ -8,7 +8,7 @@ let userService: UserService = new UserService();
 users.get('/', (request: Request, response: Response, next: NextFunction) => {
     response.status(200);
     response.type('application/json');
-    response.send(userService.getUserList());
+    response.send(userService.getUsers());
 });
 
 users.post('/', (request: Request, response: Response, next: NextFunction) => {

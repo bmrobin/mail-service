@@ -24,7 +24,7 @@ export class MailService {
      */
     public mailUsers(): Promise<any> {
         let promiseArray = [];
-        this.userService.getUserList().forEach((user: User) => {
+        this.userService.getUsers().forEach((user: User) => {
             promiseArray.push(this.mailUser(user.getEmailAddr()));
         });
         return Promise.all(promiseArray);
