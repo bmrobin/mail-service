@@ -1,24 +1,25 @@
 import { MailService } from '../mailService';
+import { UserService } from '../userService';
 
 describe('Service: MailService', () => {
 
-    let service: MailService;
+    let mailService: MailService = new MailService();
+    let userService: UserService = new UserService();
 
     beforeAll(() => {
-        service = new MailService();
         return new Promise((resolve) => {
-            service.setup().then(() => {
+            mailService.setup().then(() => {
                 resolve();
             });
         });
     });
 
     test('should load oauth2 configuration from file', () => {
-        expect(service.getConfigFile()).toBeDefined();
-        expect(service.getConfigFile().clientId).toBe('xxxxxxxxxx.apps.googleusercontent.com');
-        expect(service.getConfigFile().clientSecret).toBe('yyyyyyyyyy');
-        expect(service.getConfigFile().refreshToken).toBe('zzzzzzzzzz');
-        expect(service.getConfigFile().user).toBe('bmrobin@mail.com');
+        expect(mailService.getConfigFile()).toBeDefined();
+        expect(mailService.getConfigFile().clientId).toBe('xxxxxxxxxx.apps.googleusercontent.com');
+        expect(mailService.getConfigFile().clientSecret).toBe('yyyyyyyyyy');
+        expect(mailService.getConfigFile().refreshToken).toBe('zzzzzzzzzz');
+        expect(mailService.getConfigFile().user).toBe('bmrobin@mail.com');
     });
 
 });
