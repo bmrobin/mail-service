@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "grunt default && node src/main/dist/express",
-    "test": "jest --coverage"
+    "test": "grunt clean ts && jest --coverage"
   },
   "cacheDirectories": [
     "node_modules"
@@ -44,18 +44,18 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/main/scripts/app/**",
-      "!src/main/scripts/app/**/.baseDir.ts"
+      "src/main/scripts/app/models/**",
+      "src/main/scripts/app/services/**",
+      "!src/main/scripts/app/**/.baseDir.ts",
+      "!src/main/dist/**"
     ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
-      "tsx",
-      "js",
-      "json"
+      "js"
     ]
   },
   "engines": {

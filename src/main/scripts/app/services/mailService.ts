@@ -8,13 +8,16 @@ import process = require('process');
 
 export class MailService {
 
+    private configFile: any;
     private userService: UserService = new UserService();
     private smtpTransporter: nodemailer.Transporter;
-    private configFile: any;
 
-    constructor() {
-        this.loadConfigFile().then(() => {
-            this.configureSmtpTransporter();
+    public setup(): Promise<any> {
+        return new Promise((resolve) => {
+            this.loadConfigFile().then(() => {
+                this.configureSmtpTransporter();
+                resolve();
+            });
         });
     }
 
@@ -31,14 +34,10 @@ export class MailService {
     }
 
     /**
-     * Send an email to a user
-     * @param emailAddr email address to mail
+     * Return the loaded OAuth2 config file
      */
-    private mailUser(emailAddr: string): Bluebird<nodemailer.SentMessageInfo> {
-        console.log('emailing user ' + emailAddr);
-        return this.smtpTransporter.sendMail(
-            this.createMailMessage(emailAddr, "here is your message!")
-        );
+    public getConfigFile(): any {
+        return this.configFile;
     }
 
     /**
@@ -46,7 +45,11 @@ export class MailService {
      */
     private loadConfigFile(): Promise<any> {
         return new Promise((resolve, reject) => {
-            fs.readFile(process.env.HOME + '/oauth2-config.json', (error, data) => {
+            let prodFile = process.env.HOME + '/' + 'oauth2-config.json';
+            let testFile = process.cwd() + '/src/main/scripts/app/services/__tests__/test-oauth2-config.json';
+            let env = process.env.NODE_ENV || 'test';
+            let file = env !== 'test' ? prodFile : testFile;
+            fs.readFile(file, (error, data) => {
                 if (error) {
                     reject();
                     throw error;
@@ -55,6 +58,17 @@ export class MailService {
                 resolve();
             });
         });
+    }
+
+    /**
+     * Send an email to a user
+     * @param emailAddr email address to mail
+     */
+    private mailUser(emailAddr: string): Bluebird<nodemailer.SentMessageInfo> {
+        console.log('emailing user ' + emailAddr);
+        return this.smtpTransporter.sendMail(
+            this.createMailMessage(emailAddr, "here is your message!")
+        );
     }
 
     /**

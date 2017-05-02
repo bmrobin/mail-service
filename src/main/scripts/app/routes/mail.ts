@@ -4,6 +4,7 @@ import { MailService } from '../services/mailService';
 const mail: Router = Router();
 
 let mailService: MailService = new MailService();
+mailService.setup();
 
 mail.get('/', (request: Request, response: Response, next: NextFunction) => {
     mailService.mailUsers().then(() => {
