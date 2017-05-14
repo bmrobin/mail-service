@@ -20,6 +20,10 @@ Install dependencies, build the code, and start the Express web server with
     $ export NODE_ENV=production
     $ npm start
 
+Execute tests with
+
+    $ npm test
+
 Interact with the service:
 
     $ curl -X POST -H "Content-Type: application/json" -d '{"emailAddr": "bmrobin@mail.com"}' localhost:9000/users
