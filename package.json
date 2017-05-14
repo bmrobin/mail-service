@@ -2,11 +2,11 @@
   "name": "mail-subscriber",
   "version": "0.0.0",
   "description": "Description for mail-subscriber",
-  "appPath": "src/main/",
+  "appPath": "src/",
   "private": true,
   "scripts": {
-    "start": "grunt default && node src/main/dist/express",
-    "test": "grunt clean ts && jest --coverage"
+    "start": "tsc && node src/dist/express",
+    "test": "tsc && jest --coverage"
   },
   "cacheDirectories": [
     "node_modules"
@@ -21,14 +21,6 @@
     "@types/nodemailer": "~1.3.32",
     "body-parser": "1.17.1",
     "express": "4.15.2",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^0.8.2",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-ts": "~6.0.0-beta.11",
-    "grunt-webpack": "^2.0.1",
     "jest": "^19.0.2",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.4.1",
@@ -44,10 +36,9 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/main/scripts/app/models/**",
-      "src/main/scripts/app/services/**",
-      "!src/main/scripts/app/**/.baseDir.ts",
-      "!src/main/dist/**"
+      "src/app/models/**",
+      "src/app/services/**",
+      "!src/dist/**"
     ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
