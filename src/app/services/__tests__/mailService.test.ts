@@ -22,9 +22,11 @@ describe('Service: MailService', () => {
         expect(mailService.getConfigFile().user).toBe('bmrobin@mail.com');
     });
 
-    // it('should try to mail users', () => {
-    //     userService.addUser('ben@test.com');
-    //     expect(mailService.mailUsers()).not.toBe(null);
-    // });
+    test('should try to mail users', () => {
+        userService.addUser('ben@test.com');
+        return mailService.mailUsers().catch((error) => {
+            expect(error.code).toBe('EAUTH');
+        });
+    });
 
 });
