@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		server: "./src/app/server.js",
-		app: "./src/app/app.jsx"
+		app: "./src/app/client/client.jsx"
 	},
 	output: {
 		path: __dirname + "/src/dist",
@@ -44,12 +43,12 @@ module.exports = {
 		// injects our bundled JS code into our HTML file inside a <script> tag
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: './src/app/index.html'
+			template: './src/app/client/index.html'
 		}),
 		// enable hot replacement on our dev server
 		new webpack.HotModuleReplacementPlugin()
 	],
-	target: 'node',
+	target: 'web',
 	stats: {
 		modules: true,
 		reasons: true
@@ -60,7 +59,7 @@ module.exports = {
 	devtool: 'source-map',
 	// configure a dev server that can watch and reload when files change
 	devServer: {
-		port: 9000,
+		port: 3000,
 		compress: true,
 		contentBase: __dirname + '/src/dist',
 		watchContentBase: true,

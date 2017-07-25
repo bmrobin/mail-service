@@ -4,8 +4,9 @@
   "description": "Description for mail-subscriber",
   "appPath": "src/",
   "scripts": {
-    "start": "node src/dist/server",
-    "build": "webpack --config webpack.server.config.js",
+    "client": "webpack-dev-server --config webpack.client.config.js",
+    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+    "server": "node src/dist/server",
     "test": "jest --coverage"
   },
   "devDependencies": {
@@ -27,6 +28,8 @@
     "load-grunt-tasks": "^3.4.1",
     "lokijs": "^1.4.3",
     "nodemailer": "4.0.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.18.2",
     "typescript": "^2.1.6",
@@ -36,8 +39,8 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/app/models/**",
-      "src/app/services/**",
+      "src/app/server/models/**",
+      "src/app/server/services/**",
       "!src/dist/**"
     ],
     "mapCoverage": true,
