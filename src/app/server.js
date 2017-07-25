@@ -1,8 +1,8 @@
 import * as http from 'http';
-import app from './app';
+import expressApp from './express';
 
 // create server and listen on provided port (on all network interfaces).
-const server = http.createServer(app);
+const server = http.createServer(expressApp);
 server.listen(9000);
 server.on('error', onError);
 server.on('listening', onListening);

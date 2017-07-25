@@ -1,28 +1,28 @@
 import * as bodyParser from 'body-parser';
-import * as express from 'express';
 import index from './routes/index';
 import mail from './routes/mail';
 import users from './routes/users';
+const express = require('express');
 
-const app: express.Express = express();
+const expressApp = express();
 // setup
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+expressApp.use(bodyParser.json());
+expressApp.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
-app.use('/', index);
-app.use('/users', users);
-app.use('/mail', mail);
+expressApp.use('/', index);
+expressApp.use('/users', users);
+expressApp.use('/mail', mail);
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
+expressApp.use((req, res, next) => {
   let err = new Error('Not Found');
   err['status'] = 404;
   next(err);
 });
 
 // error handler
-app.use((error: any, req, res, next) => {
+expressApp.use((error, req, res) => {
   res.status(error['status'] || 500);
   console.log(error);
   res.render('error', {
@@ -33,4 +33,4 @@ app.use((error: any, req, res, next) => {
   return null;
 });
 
-export default app;
+export default expressApp;

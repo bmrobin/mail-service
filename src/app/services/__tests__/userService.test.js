@@ -2,7 +2,7 @@ import { UserService } from '../userService';
 
 describe('Service: UserService', () => {
 
-    let service: UserService = new UserService();
+    let service = new UserService();
 
     test('should initialize with empty user database', () => {
         expect(service.getUsers()).toEqual([]);

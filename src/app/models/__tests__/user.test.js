@@ -1,7 +1,7 @@
 import { User } from '../user';
 
 describe('Models: User', () => {
-    let user: User;
+    let user;
     test('should create a user', () => {
         expect(user).not.toBeDefined();
         user = new User('bmrobin@email.com');

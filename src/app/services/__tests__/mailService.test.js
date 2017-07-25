@@ -3,8 +3,8 @@ import { UserService } from '../userService';
 
 describe('Service: MailService', () => {
 
-    let mailService: MailService = new MailService();
-    let userService: UserService = new UserService();
+    let mailService = new MailService();
+    let userService = new UserService();
 
     beforeAll(() => {
         return new Promise((resolve) => {
