@@ -4,10 +4,12 @@
   "description": "Description for mail-subscriber",
   "appPath": "src/",
   "scripts": {
+    "build-client": "webpack --config webpack.client.config.js",
+    "build-server": "webpack --config webpack.server.config.js",
+    "build": "npm run build-client && npm run build-server",
     "client": "webpack-dev-server --config webpack.client.config.js",
-    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
-    "server": "node src/dist/server",
-    "test": "jest --coverage"
+    "server": "npm run build-server && node src/dist/server",
+    "test": "jest"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -23,12 +25,13 @@
     "eslint-plugin-react": "^7.1.0",
     "express": "4.15.2",
     "html-webpack-plugin": "^2.29.0",
-    "jest": "^20.0.1",
+    "jest": "^20.0.4",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.4.1",
     "lokijs": "^1.4.3",
     "nodemailer": "4.0.1",
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.18.2",
@@ -39,8 +42,8 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/app/server/models/**",
-      "src/app/server/services/**",
+      "src/app/server/models/**/*.js",
+      "src/app/server/services/**/*.js",
       "!src/dist/**"
     ],
     "mapCoverage": true,
