@@ -43,7 +43,7 @@ export class MailService {
     loadConfigFile() {
         return new Promise((resolve, reject) => {
             let prodFile = process.env.HOME + '/' + 'oauth2-config.json';
-            let testFile = process.cwd() + '/src/app/services/__tests__/test-oauth2-config.json';
+            let testFile = process.cwd() + '/src/app/server/services/__tests__/test-oauth2-config.json';
             let env = process.env.NODE_ENV || 'test';
             let file = env !== 'test' ? prodFile : testFile;
             fs.readFile(file, (error, data) => {
