@@ -1,0 +1,10 @@
+.email-form {
+  padding-left: 25;
+  padding-top: 45;
+}
+
+.error {
+  color: #a94442;
+  font-weight: 800;
+  padding-bottom: 15px;
+}

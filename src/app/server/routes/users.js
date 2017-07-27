@@ -12,8 +12,8 @@ users.get('/', (request, response) => {
 });
 
 users.post('/', (request, response) => {
-    if (request.body.emailAddr) {
-        userService.addUser(request.body.emailAddr);
+    if (request.body.emailAddress) {
+        userService.addUser(request.body.emailAddress);
         response.sendStatus(201);
     } else {
         response.sendStatus(422);

@@ -1,6 +1,6 @@
 {
   "presets": ["env", "react"],
-
+  "sourceMaps": true,
   "env": {
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]
