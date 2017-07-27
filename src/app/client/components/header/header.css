@@ -1,0 +1,12 @@
+.logo {
+  float: left;
+}
+
+.header-label {
+  /* override jumbotron text color */
+  color: #82659b !important;
+}
+
+.description {
+  font-size: 30px;
+}

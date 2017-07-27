@@ -36,6 +36,14 @@ module.exports = {
 				// extract the CSS we imported as modules and inject it into the transpiled JS code
 				test: /\.css$/,
 				loader: 'style-loader!css-loader'
+			},
+			{
+				test: [/\.eot$/, /\.ttf$/, /\.woff2?$/, /\.png$/, /\.svg$/],
+				loader: 'file-loader',
+				exclude: [/\.js$/, /\.html$/, /\.json$/],
+				options: {
+					name: 'static/media/[name].[ext]'
+				},
 			}
 		]
 	},
@@ -43,7 +51,8 @@ module.exports = {
 		// injects our bundled JS code into our HTML file inside a <script> tag
 		new HtmlWebpackPlugin({
 			inject: true,
-			template: './src/app/client/index.html'
+			template: './src/app/client/index.html',
+			favicon: './src/app/client/favicon.ico'
 		}),
 		// enable hot replacement on our dev server
 		new webpack.HotModuleReplacementPlugin()
