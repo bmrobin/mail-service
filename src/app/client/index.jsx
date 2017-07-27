@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/header/Header';
+import MainFrame from './components/frames/MainFrame';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -11,7 +12,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <MainFrame />
+      </div>
     );
   }
 }
