@@ -5,7 +5,9 @@ export default class ContactList extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      connectionError: false
+    };
   }
 
   componentWillMount() {
@@ -18,6 +20,7 @@ export default class ContactList extends React.Component {
       })
       .catch((error) => {
         console.error(error);
+        this.setState({connectionError: true});
       });
   }
 
@@ -25,7 +28,8 @@ export default class ContactList extends React.Component {
     return (
       <div>
         {this.state.contactList && <Contacts contacts={this.state.contactList} />}
-      </div>
+        { this.state.connectionError && <Error /> }
+      </div>      
     );
   }
 }
@@ -33,7 +37,7 @@ export default class ContactList extends React.Component {
 function Contacts(props) {
   const contacts = props.contacts;
   if (contacts.length === 0) {
-    return <p>No contacts</p>;
+    return <p className="error">No contacts</p>;
   }
   const contactList = contacts.map((contact) => {
     return (
@@ -51,5 +55,11 @@ function Contacts(props) {
       </thead>
       <tbody>{contactList}</tbody>
     </Table>
+  );
+}
+
+function Error() {
+  return (
+    <p className="error">An error occurred fetching contact list</p>
   );
 }
