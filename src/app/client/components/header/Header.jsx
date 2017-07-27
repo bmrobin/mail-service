@@ -13,6 +13,21 @@ class Header extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('http://localhost:9000/users', {
+      method: 'GET',
+      mode: 'cors'
+    }).then((result) => {
+        return result.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   navSelected(event) {
     switch (event) {
       case 'list':

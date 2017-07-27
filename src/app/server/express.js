@@ -2,12 +2,14 @@ import * as bodyParser from 'body-parser';
 import index from './routes/index';
 import mail from './routes/mail';
 import users from './routes/users';
+import cors from 'cors';
 const express = require('express');
 
 const expressApp = express();
 // setup
 expressApp.use(bodyParser.json());
 expressApp.use(bodyParser.urlencoded({ extended: true }));
+expressApp.use(cors());
 
 // routes
 expressApp.use('/', index);

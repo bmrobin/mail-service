@@ -1,12 +1,11 @@
 import { User } from '../models/user';
 const loki = require('lokijs');
 
-let db, users;
 export class UserService {
 
     constructor() {
-        db = new loki('users-database');
-        users = db.addCollection('users');
+        this.db = new loki('users-database');
+        this.users = this.db.addCollection('users');
     }
 
     /**
@@ -15,13 +14,13 @@ export class UserService {
      */
     addUser(emailAddr) {
         console.log('adding user ' + emailAddr);
-        users.insert(new User(emailAddr));
+        this.users.insert(new User(emailAddr));
     }
 
     /**
      * Retrieve all users from the mail subscriber list
      */
     getUsers() {
-        return users.find();
+        return this.users.find();
     }
 }
