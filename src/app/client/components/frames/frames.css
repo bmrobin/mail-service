@@ -1,0 +1,13 @@
+.sidebar {
+  top: 40px;
+}
+
+.nav-pills > li > a {
+  color: #82659b;
+  font-size: 18px;
+}
+
+.nav-pills > li.active > a {
+  background-color: #eee !important;
+  color: #82659b !important;
+}

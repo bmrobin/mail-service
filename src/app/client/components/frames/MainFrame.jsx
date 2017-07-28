@@ -1,44 +1,44 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import Navbar from '../navbar/Navbar';
-import ContactList from '../contactList/ContactList';
-import NewContact from '../newContact/NewContact';
+import { Col, Nav, NavItem } from 'react-bootstrap';
+import ContactsFrame from './ContactsFrame';
+import './frames.css';
 
 export default class MainFrame extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayContactList: true,
-      displayNewContact: false
+      displayContactsFrame: true,
+      displayMailFrame: false
     };
-    this.navSelect = this.navSelect.bind(this);
+    this.frameSelect = this.frameSelect.bind(this);
   }
 
-  navSelect(event) {
-    switch (event) {
-      case 'list':
-        this.setState({ displayContactList: true, displayNewContact: false });
+  frameSelect(frame) {
+    switch(frame) {
+      case 'contacts':
+        this.setState({displayContactsFrame: true, displayMailFrame: false});
         break;
-      case 'new':
-        this.setState({ displayNewContact: true, displayContactList: false });
+      case 'mail':
+        this.setState({displayMailFrame: true, displayContactsFrame: false});
         break;
     }
   }
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={8}>
-            <Navbar
-              contactListSelected={this.state.displayContactList}
-              newContactSelected={this.state.displayNewContact}
-              navSelectAction={this.navSelect} />
-            { this.state.displayContactList && <ContactList /> }
-            { this.state.displayNewContact && <NewContact /> }
-          </Col>
-        </Row>
-      </Grid>
+      <div>
+
+        <Col sm={3} md={2} className="sidebar">
+          <Nav bsStyle="pills" stacked onSelect={this.frameSelect}>
+            <NavItem eventKey="contacts" active={this.state.displayContactsFrame}>Contacts</NavItem>
+            <NavItem eventKey="mail" active={this.state.displayMailFrame}>Mail</NavItem>
+          </Nav>
+        </Col>
+
+        { this.state.displayContactsFrame && <ContactsFrame /> }
+        { this.state.displayMailFrame && <span>MailFrame</span> }
+
+      </div>
     );
   }
 }
