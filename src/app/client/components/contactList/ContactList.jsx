@@ -1,5 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import Error from '../error/Error';
+import Contact from './Contact';
 
 export default class ContactList extends React.Component {
   
@@ -28,10 +30,16 @@ export default class ContactList extends React.Component {
     return (
       <div>
         {this.state.contactList && <Contacts contacts={this.state.contactList} />}
-        { this.state.connectionError && <Error /> }
+        { this.state.connectionError &&
+          <Error message="An error occurred fetching contact list" />
+        }
       </div>      
     );
   }
+}
+
+function deleteContact(contact) {
+  console.log('deleting user ', contact);
 }
 
 function Contacts(props) {
@@ -41,13 +49,11 @@ function Contacts(props) {
   }
   const contactList = contacts.map((contact) => {
     return (
-      <tr key={contact.$loki}>
-        <td>{contact.emailAddress}</td>
-      </tr>
+      <Contact key={contact.$loki} contact={contact} delete={deleteContact} />
     );
   });
   return (
-    <Table bordered striped responsive>
+    <Table striped responsive hover>
       <thead>
         <tr>
           <td>Email Address</td>
@@ -55,11 +61,5 @@ function Contacts(props) {
       </thead>
       <tbody>{contactList}</tbody>
     </Table>
-  );
-}
-
-function Error() {
-  return (
-    <p className="error">An error occurred fetching contact list</p>
   );
 }

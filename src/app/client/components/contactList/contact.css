@@ -1,0 +1,10 @@
+.action-column {
+  text-align: right;
+}
+
+.delete-button {
+  color: #fff !important;
+  background-color: #d9534f !important;
+  border-color: #d43f3a !important;
+  width: 35px;
+}
