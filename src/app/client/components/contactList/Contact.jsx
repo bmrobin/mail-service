@@ -17,7 +17,11 @@ export default class Contact extends React.Component {
       <tr>
         <td>{this.props.contact.emailAddress}</td>
         <td className="action-column">
-          <Button bsSize="xs" className="delete-button" onClick={() => this.deleteHandler()}>x</Button>
+          <Button bsSize="sm"
+                  className="delete-button"
+                  onClick={() => this.deleteHandler()}>
+            X
+          </Button>
         </td>
       </tr>
     );

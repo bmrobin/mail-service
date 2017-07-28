@@ -2,6 +2,13 @@
   float: left;
 }
 
+.github-logo {
+  float: right;
+  position: relative;
+  top: -135px;
+  right: 10px;
+}
+
 .header-label {
   /* override jumbotron text color */
   color: #82659b !important;
