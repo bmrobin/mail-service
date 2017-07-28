@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, FormControl, FormGroup, ControlLabel, Button, Col } from 'react-bootstrap';
+import Error from '../error/Error';
 import './newContact.css';
 
 export default class NewContact extends React.Component {
@@ -54,17 +55,12 @@ export default class NewContact extends React.Component {
             </Col>
           </FormGroup>
 
-          {this.state.connectionError && <Error />}
+          {this.state.connectionError && <Error message="An error occurred while saving" />}
 
           <Button type="submit" id="save-id">Save</Button>
+
         </Form>
       </Col>
     );
   }
-}
-
-function Error() {
-  return (
-    <div className="error">An error occurred while saving</div>
-  );
 }
