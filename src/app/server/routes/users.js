@@ -20,4 +20,13 @@ users.post('/', (request, response) => {
     }
 });
 
+users.delete('/:emailAddress', (request, response) => {
+    if (request.params.emailAddress) {
+        userService.deleteUser(request.params.emailAddress);
+        response.sendStatus(200);
+    } else {
+        response.sendStatus(422);
+    }
+});
+
 export default users;

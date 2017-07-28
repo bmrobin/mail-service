@@ -10,36 +10,46 @@ export default class ContactList extends React.Component {
     this.state = {
       connectionError: false
     };
+
+    // bind 'this' context to instance of this class so callback can use getContacts()
+    this.deleteContact = this.deleteContact.bind(this);
   }
 
   componentWillMount() {
+    this.getContacts();
+  }
+
+  getContacts() {
     fetch('http://localhost:9000/users', {
       method: 'GET',
       mode: 'cors'
     }).then(result => result.json())
       .then((contacts) => {
-        this.setState({contactList: contacts});
+        this.setState({ contactList: contacts });
       })
       .catch((error) => {
         console.error(error);
-        this.setState({connectionError: true});
+        this.setState({ connectionError: true });
       });
+  }
+  
+  deleteContact(contact) {
+    fetch('http://localhost:9000/users/' + contact.emailAddress, {
+      method: 'DELETE',
+      mode: 'cors'
+    }).then(() => this.getContacts());
   }
 
   render() {
     return (
       <div>
-        {this.state.contactList && <Contacts contacts={this.state.contactList} />}
+        {this.state.contactList && <Contacts contacts={this.state.contactList} deleteContact={this.deleteContact} />}
         { this.state.connectionError &&
-          <Error message="An error occurred fetching contact list" />
+          <Error message="An error occurred fetching contact list. Check connection to server." />
         }
       </div>      
     );
   }
-}
-
-function deleteContact(contact) {
-  console.log('deleting user ', contact);
 }
 
 function Contacts(props) {
@@ -49,7 +59,7 @@ function Contacts(props) {
   }
   const contactList = contacts.map((contact) => {
     return (
-      <Contact key={contact.$loki} contact={contact} delete={deleteContact} />
+      <Contact key={contact.$loki} contact={contact} delete={props.deleteContact} />
     );
   });
   return (

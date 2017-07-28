@@ -23,4 +23,9 @@ export class UserService {
     getUsers() {
         return this.users.find();
     }
+
+    deleteUser(emailAddress) {
+        console.log('deleting user ' + emailAddress);
+        this.users.chain().find({ "emailAddress": emailAddress }).remove();
+    }
 }

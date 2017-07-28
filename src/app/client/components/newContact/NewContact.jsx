@@ -55,7 +55,7 @@ export default class NewContact extends React.Component {
             </Col>
           </FormGroup>
 
-          {this.state.connectionError && <Error message="An error occurred while saving" />}
+          {this.state.connectionError && <Error message="An error occurred while saving. Check connection to server." />}
 
           <Button type="submit" id="save-id">Save</Button>
 
