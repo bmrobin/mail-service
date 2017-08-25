@@ -11,3 +11,7 @@
   background-color: #eee !important;
   color: #82659b !important;
 }
+
+.save-btn {
+  float: right;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col, Nav, NavItem } from 'react-bootstrap';
 import ContactsFrame from './ContactsFrame';
+import MailFrame from './MailFrame';
 import './frames.css';
 
-export default class MainFrame extends React.Component {
+export default class RootFrame extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ export default class MainFrame extends React.Component {
         </Col>
 
         { this.state.displayContactsFrame && <ContactsFrame /> }
-        { this.state.displayMailFrame && <span>MailFrame</span> }
+        { this.state.displayMailFrame && <MailFrame /> }
 
       </div>
     );
