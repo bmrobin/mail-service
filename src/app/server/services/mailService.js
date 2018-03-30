@@ -22,10 +22,10 @@ export class MailService {
      * Collect the list of users and send emails to all of them.
      * Returns a Promise when the entire operation is completed
      */
-    mailUsers() {
+    mailUsers(message) {
         let promiseArray = [];
         userService.getUsers().forEach((user) => {
-            promiseArray.push(this.mailUser(user.getEmailAddr()));
+            promiseArray.push(this.mailUser(user.getEmailAddr(), message));
         });
         return Promise.all(promiseArray);
     }
@@ -61,10 +61,10 @@ export class MailService {
      * Send an email to a user
      * @param emailAddr email address to mail
      */
-    mailUser(emailAddr) {
+    mailUser(emailAddr, message) {
         console.log('emailing user ' + emailAddr);
         return smtpTransporter.sendMail(
-            this.createMailMessage(emailAddr, "here is your message!")
+            this.createMailMessage(emailAddr, message)
         );
     }
 

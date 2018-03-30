@@ -6,8 +6,8 @@ const mail = Router();
 let mailService = new MailService();
 mailService.setup();
 
-mail.get('/', (request, response) => {
-    mailService.mailUsers().then(() => {
+mail.post('/', (request, response) => {
+    mailService.mailUsers(request.body.message).then(() => {
         response.type('application/json');
         response.sendStatus(200);
     });

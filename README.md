@@ -18,7 +18,7 @@ Install dependencies, build the code, and start the Express web server with
 
     $ npm install
     $ export NODE_ENV=production
-    $ npm start
+    $ npm run server
 
 Execute tests with
 
@@ -32,7 +32,7 @@ Interact with the service:
     > Created
     $ curl localhost:9000/users
     > [{"emailAddress":"bmrobin@mail.com"}, {"emailAddress":"bmrobin123456@mail.com"}]
-    $ curl localhost:9000/mail
+    $ curl -X POST localhost:9000/mail
 
 Currently only sends a default message - more functionality to come
 
