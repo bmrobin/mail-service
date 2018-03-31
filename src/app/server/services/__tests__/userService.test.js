@@ -2,7 +2,11 @@ import { UserService } from '../userService';
 
 describe('Service: UserService', () => {
 
-    let service = new UserService();
+    let service;
+
+    beforeEach(() => {
+        service = new UserService();
+    });
 
     test('should initialize with empty user database', () => {
         expect(service.getUsers()).toEqual([]);
@@ -16,6 +20,13 @@ describe('Service: UserService', () => {
         let user2 = service.getUsers()[1];
         expect(user1.getEmailAddr()).toBe('bmrobin@mail.com');
         expect(user2.getEmailAddr()).toBe('test@mail.com');
+    });
+
+    test('should delete user from the database', () => {
+        service.addUser('test@mail.com');
+        expect(service.getUsers().length).toBe(1);
+        service.deleteUser('test@mail.com');
+        expect(service.getUsers().length).toBe(0);
     });
 
 });

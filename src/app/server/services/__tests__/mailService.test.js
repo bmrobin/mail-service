@@ -3,10 +3,11 @@ import { UserService } from '../userService';
 
 describe('Service: MailService', () => {
 
-    let mailService = new MailService();
+    let mailService;
     let userService = new UserService();
 
     beforeAll(() => {
+        mailService = new MailService(userService);
         return new Promise((resolve) => {
             mailService.setup().then(() => {
                 resolve();
