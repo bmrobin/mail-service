@@ -1,16 +1,19 @@
 import { Router } from 'express';
 import { MailService } from '../services/mailService';
 
-const mail = Router();
+let mailService;
 
-let mailService = new MailService();
-mailService.setup();
+export const setUserService = (userService) => {
+    mailService = new MailService(userService)
+    mailService.setup();
+}
 
-mail.post('/', (request, response) => {
-    mailService.mailUsers(request.body.message).then(() => {
-        response.type('application/json');
-        response.sendStatus(200);
+export const mail = Router()
+    .post('/', (request, response) => {
+        mailService.mailUsers(request.body.message).then(() => {
+            response.type('application/json');
+            response.sendStatus(200);
+        });
     });
-});
 
 export default mail;

@@ -1,12 +1,16 @@
 import * as bodyParser from 'body-parser';
 import index from './routes/index';
-import mail from './routes/mail';
-import users from './routes/users';
+import { mail, setUserService as setMailUserService } from './routes/mail';
+import { UserService } from './services/userService';
+import { users, setUserService } from './routes/users';
 import cors from 'cors';
 const express = require('express');
 
-const expressApp = express();
 // setup
+const expressApp = express();
+const userService = new UserService();
+setUserService(userService);
+setMailUserService(userService);
 expressApp.use(bodyParser.json());
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(cors());

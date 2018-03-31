@@ -1,13 +1,15 @@
-import { UserService } from './userService';
 import nodemailer from 'nodemailer';
 import * as fs from 'fs';
 import * as process from 'process';
 
 let configFile;
-let userService = new UserService();
 let smtpTransporter;
 
 export class MailService {
+
+    constructor(userService) {
+        this.userService = userService;
+    }
 
     setup() {
         return new Promise((resolve) => {
@@ -24,7 +26,7 @@ export class MailService {
      */
     mailUsers(message) {
         let promiseArray = [];
-        userService.getUsers().forEach((user) => {
+        this.userService.getUsers().forEach((user) => {
             promiseArray.push(this.mailUser(user.getEmailAddr(), message));
         });
         return Promise.all(promiseArray);
@@ -62,7 +64,6 @@ export class MailService {
      * @param emailAddr email address to mail
      */
     mailUser(emailAddr, message) {
-        console.log('emailing user ' + emailAddr);
         return smtpTransporter.sendMail(
             this.createMailMessage(emailAddr, message)
         );

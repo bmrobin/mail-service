@@ -8,9 +8,9 @@ export default class Message extends React.Component {
     this.state = {};
   }
 
-  sendEmail() {
+  sendEmail(event) {
     event.preventDefault();
-    console.log("Sending email to contact list...");
+    console.log("Sending email to contact list...", JSON.stringify(this.state));
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     fetch('http://localhost:9000/mail', {
@@ -46,7 +46,12 @@ export default class Message extends React.Component {
 
         {this.state.connectionError && <Error message="An error occurred while saving. Check connection to server." />}
 
-        <Button type="submit" className="save-btn" id="save-id">Send</Button>
+        <Button type="submit" 
+                className="save-btn"
+                id="save-id"
+                onSubmit={(event) => this.sendEmail(event)}>
+          Send
+        </Button>
 
       </Form>
     );
