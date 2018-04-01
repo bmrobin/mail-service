@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, FormControl, FormGroup, ControlLabel, Button, Col } from 'react-bootstrap';
-import Error from '../error/Error';
+import Error from 'components/error/Error';
 import './newContact.css';
 
 export default class NewContact extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import Error from '../error/Error';
+import Error from 'components/error/Error';
 import Contact from './Contact';
 
 export default class ContactList extends React.Component {

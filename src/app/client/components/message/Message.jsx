@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Col, Button } from 'react-bootstrap';
-import Error from '../error/Error';
+import Error from 'components/error/Error';
 
 export default class Message extends React.Component {
   constructor(props) {

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
 	entry: {
@@ -63,6 +64,10 @@ module.exports = {
 		reasons: true
 	},
 	resolve: {
+		alias: {
+			'components': path.resolve(__dirname, './src/app/client/components'),
+			'frames': path.resolve(__dirname, './src/app/client/frames')
+		},
 		extensions: ['.jsx', '.js']
 	},
 	devtool: 'source-map',

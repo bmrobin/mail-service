@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import Navbar from '../navbar/Navbar';
-import ContactList from '../contactList/ContactList';
-import NewContact from '../newContact/NewContact';
+import Navbar from 'components/navbar/Navbar';
+import ContactList from 'components/contactList/ContactList';
+import NewContact from 'components/newContact/NewContact';
 
 export default class ContactsFrame extends React.Component {
 

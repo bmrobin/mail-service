@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Nav, NavItem } from 'react-bootstrap';
-import ContactsFrame from './ContactsFrame';
-import MailFrame from './MailFrame';
-import './frames.css';
+import ContactsFrame from 'frames/ContactsFrame';
+import MailFrame from 'frames/MailFrame';
+import 'frames/frames.css';
 
 export default class RootFrame extends React.Component {
   constructor(props) {

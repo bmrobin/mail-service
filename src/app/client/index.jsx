@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/header/Header';
-import RootFrame from './components/frames/RootFrame';
+import Header from 'components/header/Header';
+import RootFrame from 'frames/RootFrame';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {

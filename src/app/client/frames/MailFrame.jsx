@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import Message from '../message/Message';
+import Message from 'components/message/Message';
 
 export default class MailFrame extends React.Component {
 
