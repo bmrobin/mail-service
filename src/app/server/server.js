@@ -1,5 +1,8 @@
 import * as http from 'http';
 import expressApp from './express';
+import chalk from 'chalk';
+const log = console.log;
+const error = console.error;
 
 // create server and listen on provided port (on all network interfaces).
 const server = http.createServer(expressApp);
@@ -10,25 +13,25 @@ server.on('listening', onListening);
 /**
  * Event listener for HTTP server "error" event.
  */
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
+function onError(err) {
+  if (err.syscall !== 'listen') {
+    throw err;
   }
 
   let bind = 'Pipe ' + 9000;
 
   // handle specific listen errors with friendly messages
-  switch (error.code) {
+  switch (err.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      error(chalk.red(bind + ' requires elevated privileges'));
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      error(chalk.red(bind + ' is already in use'));
       process.exit(1);
       break;
     default:
-      throw error;
+      throw err;
   }
 }
 
@@ -41,5 +44,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
 
-  console.log('Listening on ' + bind);
+  log(chalk.green('Listening on ' + bind));
 }

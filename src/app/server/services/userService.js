@@ -1,5 +1,7 @@
 import { User } from '../models/user';
+import chalk from 'chalk';
 const loki = require('lokijs');
+const log = console.log;
 
 export class UserService {
 
@@ -13,7 +15,7 @@ export class UserService {
      * @param emailAddr email address of the user to add
      */
     addUser(emailAddr) {
-        console.log('adding user ' + emailAddr);
+        log(chalk.green('adding user ' + emailAddr));
         this.users.insert(new User(emailAddr));
     }
 
@@ -25,7 +27,7 @@ export class UserService {
     }
 
     deleteUser(emailAddress) {
-        console.log('deleting user ' + emailAddress);
+        log(chalk.green('deleting user ' + emailAddress));
         this.users.chain().find({ "emailAddress": emailAddress }).remove();
     }
 }

@@ -33,9 +33,18 @@ module.exports = {
 	},
 	target: 'node',
 	stats: {
-		modules: true,
-		reasons: true
-	},
+    colors: true,
+    hash: false,
+    version: false,
+    timings: false,
+    assets: false,
+    chunks: false,
+		modules: false,
+		moduleTrace: false,
+    reasons: true,
+    errors: true,
+    warnings: true,
+  },
 	resolve: {
 		extensions: ['.js']
 	}

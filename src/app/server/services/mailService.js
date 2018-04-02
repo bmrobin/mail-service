@@ -1,6 +1,10 @@
 import nodemailer from 'nodemailer';
 import * as fs from 'fs';
 import * as process from 'process';
+import chalk from 'chalk';
+const log = console.log;
+const error = console.error;
+const warn = console.warn;
 
 let configFile;
 let smtpTransporter;
@@ -44,16 +48,24 @@ export class MailService {
      */
     loadConfigFile() {
         return new Promise((resolve, reject) => {
-            let prodFile = process.env.HOME + '/' + 'oauth2-config.json';
-            let testFile = process.cwd() + '/src/app/server/services/__tests__/test-oauth2-config.json';
-            let env = process.env.NODE_ENV || 'test';
-            let file = env !== 'test' ? prodFile : testFile;
-            fs.readFile(file, (error, data) => {
-                if (error) {
+            const prodFile = process.env.HOME + '/' + 'oauth2-config.json';
+            const testFile = process.cwd() + '/src/app/server/services/__tests__/test-oauth2-config.json';
+            const env = process.env.NODE_ENV || 'test';
+            let file;
+            if (env !== 'test') {
+                file = prodFile;
+            } else {
+                warn(chalk.magenta('using test oauth2 config file. email will not be functional without it'));
+                file = testFile;
+            }
+            fs.readFile(file, (err, data) => {
+                if (err) {
+                    error(chalk.red('couldn\'t load oauth2 config file. file not found or could not be read'));
                     reject();
-                    throw error;
+                    throw err;
                 }
                 configFile = JSON.parse(data);
+                log(chalk.green('successfully loaded oauth2 config file'));
                 resolve();
             });
         });

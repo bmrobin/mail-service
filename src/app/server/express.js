@@ -4,6 +4,8 @@ import { mail, setUserService as setMailUserService } from './routes/mail';
 import { UserService } from './services/userService';
 import { users, setUserService } from './routes/users';
 import cors from 'cors';
+import chalk from 'chalk';
+const error = console.error;
 const express = require('express');
 
 // setup
@@ -28,13 +30,13 @@ expressApp.use((req, res, next) => {
 });
 
 // error handler
-expressApp.use((error, req, res) => {
-  res.status(error['status'] || 500);
-  console.log(error);
+expressApp.use((err, req, res) => {
+  res.status(err['status'] || 500);
+  error(chalk.red(err));
   res.render('error', {
-    message: error.message,
-    // hide the stacktrace to the user by setting this to error: {}
-    error
+    message: err.message,
+    // hide the stacktrace to the user by setting this to err: {}
+    err
   });
   return null;
 });
