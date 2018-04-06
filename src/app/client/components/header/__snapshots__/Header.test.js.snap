@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render component 1`] = `
+<div>
+  <div
+    className="jumbotron"
+  >
+    <img
+      className="logo"
+      src="test-file-stub"
+    />
+    <h1
+      className="header-label"
+    >
+      mail-service |
+      <span
+        className="description"
+      >
+          A mail service for you
+      </span>
+    </h1>
+    <div
+      className="github-logo"
+    >
+      <a
+        href="https://github.com/bmrobin/mail-service/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          src="test-file-stub"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -66,7 +66,8 @@ module.exports = {
 	resolve: {
 		alias: {
 			'components': path.resolve(__dirname, './src/app/client/components'),
-			'frames': path.resolve(__dirname, './src/app/client/frames')
+			'frames': path.resolve(__dirname, './src/app/client/frames'),
+			'utils': path.resolve(__dirname, './src/app/client/utils')
 		},
 		extensions: ['.jsx', '.js']
 	},

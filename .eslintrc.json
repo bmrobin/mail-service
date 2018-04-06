@@ -28,6 +28,6 @@
     "no-console": "off",
     "constructor-super": "warn",
     "valid-typeof": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "warn"
   }
 }

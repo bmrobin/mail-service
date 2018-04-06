@@ -1,4 +1,5 @@
 import React from 'react';
+import * as propTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import './contact.css';
 
@@ -23,3 +24,10 @@ export default class Contact extends React.Component {
     );
   }
 }
+
+Contact.propTypes = {
+  delete: propTypes.func,
+  contact: propTypes.shape({
+    emailAddress: propTypes.string.isRequired
+  }).isRequired
+};

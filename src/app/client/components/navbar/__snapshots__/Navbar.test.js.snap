@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Component should display contact list when selected 1`] = `
+<ul
+  className="nav nav-tabs"
+  role={null}
+>
+  <li
+    className="active"
+    role="presentation"
+    style={undefined}
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+    >
+      Contact List
+    </a>
+  </li>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+    >
+      New Contact
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Navbar Component should display new contact when selected 1`] = `
+<ul
+  className="nav nav-tabs"
+  role={null}
+>
+  <li
+    className=""
+    role="presentation"
+    style={undefined}
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+    >
+      Contact List
+    </a>
+  </li>
+  <li
+    className="active"
+    role="presentation"
+    style={undefined}
+  >
+    <a
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+    >
+      New Contact
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Navbar Component should render component 1`] = `
+"<Nav bsStyle=\\"tabs\\" onSelect={[Function: onSelect]} justified={false} pullRight={false} pullLeft={false} stacked={false} bsClass=\\"nav\\">
+  <NavItem eventKey=\\"list\\" active={false} disabled={false}>
+    Contact List
+  </NavItem>
+  <NavItem eventKey=\\"new\\" active={false} disabled={false}>
+    New Contact
+  </NavItem>
+</Nav>"
+`;

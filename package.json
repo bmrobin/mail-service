@@ -11,7 +11,7 @@
     "server": "npm run build-server && node src/dist/server",
     "test": "jest"
   },
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
@@ -21,25 +21,30 @@
     "babel-register": "^6.24.1",
     "body-parser": "1.17.1",
     "bootstrap": "^3.3.7",
+    "chalk": "^2.3.2",
     "cors": "^2.8.4",
     "css-loader": "^0.28.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "eslint": "^4.3.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.1.0",
     "express": "4.15.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
     "jshint-stylish": "^2.1.0",
     "load-grunt-tasks": "^3.4.1",
     "lokijs": "^1.4.3",
     "nodemailer": "4.0.1",
+    "prop-types": "^15.6.1",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "source-map-loader": "^0.1.6",
     "style-loader": "^0.18.2",
-    "typescript": "^2.1.6",
     "url-loader": "^0.5.9",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.6.1"
@@ -50,18 +55,27 @@
     "collectCoverageFrom": [
       "src/app/server/models/**/*.js",
       "src/app/server/services/**/*.js",
+      "src/app/client/**/*.js",
+      "src/app/client/**/*.jsx",
       "!src/dist/**"
     ],
     "mapCoverage": true,
     "moduleFileExtensions": [
       "jsx",
       "js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss|less)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "components(.*)$": "<rootDir>/src/app/client/components/$1",
+      "frames(.*)$": "<rootDir>/src/app/client/frames/$1",
+      "utils(.*)$": "<rootDir>/src/app/client/utils/$1"
+    },
+    "setupFiles": [
+      "./src/setupTests.js"
     ]
   },
   "engines": {
     "node": "^4.3"
-  },
-  "dependencies": {
-    "chalk": "^2.3.2"
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import * as propTypes from 'prop-types';
 import { Nav, NavItem } from 'react-bootstrap';
 
 export default class Navbar extends React.Component {
@@ -20,3 +21,9 @@ export default class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  navSelectAction: propTypes.func,
+  contactListSelected: propTypes.bool.isRequired,
+  newContactSelected: propTypes.bool.isRequired
+};

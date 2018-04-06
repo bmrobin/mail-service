@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Component should render component 1`] = `
+"<tr>
+  <td>
+    bmrobin@mail.com
+  </td>
+  <td className=\\"action-column\\">
+    <Button bsSize=\\"sm\\" className=\\"delete-button\\" onClick={[Function: onClick]} active={false} block={false} disabled={false} bsStyle=\\"default\\" bsClass=\\"btn\\">
+      X
+    </Button>
+  </td>
+</tr>"
+`;

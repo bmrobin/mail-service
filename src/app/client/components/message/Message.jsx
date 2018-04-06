@@ -1,5 +1,6 @@
 import React  from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Col, Button } from 'react-bootstrap';
+import { sendEmail } from 'utils/api';
 import Error from 'components/error/Error';
 
 export default class Message extends React.Component {
@@ -11,23 +12,20 @@ export default class Message extends React.Component {
   sendEmail(event) {
     event.preventDefault();
     console.log("Sending email to contact list...", JSON.stringify(this.state));
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    fetch('http://localhost:9000/mail', {
-      body: JSON.stringify(this.state),
-      method: 'POST',
-      mode: 'cors',
-      headers: headers
-    }).then(() => {
+    sendEmail(this.state.message).then(() => {
       console.log('success!');
+      this.setState({ message: undefined });
+      console.log(this.state);
     }).catch(() => {
       console.error('error!');
+      this.setState({ connectionError: true });
     });
   }
 
   handler(event) {
     this.setState({
-      message: event.target.value
+      message: event.target.value,
+      connectionError: undefined
     });
   }
 
@@ -38,13 +36,12 @@ export default class Message extends React.Component {
         <FormGroup>
           <Col sm={2} componentClass={ControlLabel}>
             Message
-                  </Col>
+          </Col>
           <Col sm={10}>
             <FormControl componentClass="textarea" id="message-id" onChange={(e) => this.handler(e)} />
           </Col>
         </FormGroup>
 
-        {this.state.connectionError && <Error message="An error occurred while saving. Check connection to server." />}
 
         <Button type="submit" 
                 className="save-btn"
@@ -52,6 +49,8 @@ export default class Message extends React.Component {
                 onSubmit={(event) => this.sendEmail(event)}>
           Send
         </Button>
+
+        {this.state.connectionError && <Error message="An error occurred while sending message." />}
 
       </Form>
     );

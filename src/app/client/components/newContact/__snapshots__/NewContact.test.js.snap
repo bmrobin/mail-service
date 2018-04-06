@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewContact Component should render component 1`] = `
+"<Col xs={12} md={7} className=\\"email-form\\" componentClass=\\"div\\" bsClass=\\"col\\">
+  <Form horizontal={true} onSubmit={[Function: onSubmit]} inline={false} componentClass=\\"form\\" bsClass=\\"form\\">
+    <FormGroup bsClass=\\"form-group\\">
+      <Col sm={2} componentClass={[Function: ControlLabel]} bsClass=\\"col\\">
+        Email
+      </Col>
+      <Col sm={10} componentClass=\\"div\\" bsClass=\\"col\\">
+        <FormControl type=\\"text\\" id=\\"email-id\\" onChange={[Function: onChange]} componentClass=\\"input\\" bsClass=\\"form-control\\" />
+      </Col>
+    </FormGroup>
+    <Button type=\\"submit\\" className=\\"save-btn\\" id=\\"save-id\\" active={false} block={false} disabled={false} bsStyle=\\"default\\" bsClass=\\"btn\\">
+      Save
+    </Button>
+  </Form>
+</Col>"
+`;

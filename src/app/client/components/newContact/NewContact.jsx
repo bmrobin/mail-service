@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormControl, FormGroup, ControlLabel, Button, Col } from 'react-bootstrap';
 import Error from 'components/error/Error';
+import { saveUser } from 'utils/api';
 import './newContact.css';
 
 export default class NewContact extends React.Component {
@@ -13,15 +14,8 @@ export default class NewContact extends React.Component {
 
   saveEmail(event) {
     event.preventDefault();
-    this.setState({ connectionError: false });
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    fetch('http://localhost:9000/users', {
-      method: 'POST',
-      mode: 'cors',
-      headers: headers,
-      body: JSON.stringify(this.state)
-    }).then(() => {
+    saveUser(this.state.emailAddress).then(() => {
+      this.setState({ connectionError: false });
       this.resetForm();
     }).catch(() => {
       this.resetForm();
